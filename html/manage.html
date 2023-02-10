@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="../js/manager.js" defer></script>
+    <script src="../js/script.js" defer></script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/61efd671c0.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@900&display=swap" rel="stylesheet">
+    <title>Management</title>
+</head>
+
+<body>
+  <i class="cursor fa-solid fa-xmark" id="cursorChanger"></i>
+
+    <div id="showStuff">
+        <div id="showNotifications">
+        </div>
+        <nav>
+            <div id="iconBox"></div>
+        </nav>
+    </div>
+
+    <div id="toolProps"></div>
+    <div id="showSettingProperties"></div>
+
+    <div id="toolbar">
+        <i class="fa-solid fa-folder-plus" id="addFolder"></i>
+        <i class="fa-solid fa-folder-minus" id="removeFolder" onclick="getSelected('xCursorSelected')"> </i>
+    <!-- <i class="fa-solid fa-ghost" id="ghostTodo" onclick="getSelected('ghostGroupSelected')"></i> -->
+        <i class="fa-solid fa-arrow-right-from-bracket" id="colorizeTodo"
+            onclick="getSelected('leaveFolderSelected')"></i>
+        <i class="fa-solid fa-palette" id="selectColor" onclick="getSelected('colorPalate')"></i>
+    <!--     <i class="fa-solid fa-skull-crossbones" id="killTodo" onclick="getSelected('killTodoSelected')"></i> -->
+        <i class="fa-solid fa-arrow-pointer" id="getDefault" onclick="getSelected('usualCursorSelected')"></i>
+    </div>
+
+
+    <div class="showNavBox">
+        <div id="mainContentBox">
+            <div id="mainBox1"></div>
+        </div>
+    </div>
+
+
+
+    <!-- <i class="fa-solid fa-folder"></i> -->
+    <div id="centerFolder">
+        <div id="addContent"></div>
+
+        <div id="folderOpen">
+            <div id="showTodos"></div>
+
+            <div id="addTodoBox">
+                <div id="addTodoBoxContent">
+                    <div style="padding:.5vw; text-align:center;font-family: 'CeraRoundBlack'; color: aliceblue; ">
+                        Default Setup</div>
+
+                    <div id="nameBox">
+                        <h4 id="inputNameBox">Name</h4>
+                        <input type="text" id="todoName">
+                    </div>
+                    <div id="todoBox">
+                        <h4 id="inputDes">Description </h4>
+                        <textarea data-role="textarea" id="todolDescription"></textarea>
+                    </div>
+
+                    <div id="dateBox" style="display: grid; grid-template-columns: auto;">
+                        <h4 id="inputDes">Date </h4>
+                        <input type="date" id="todoDate">
+                    </div>
+
+                    <div id="submitTodo" onclick="addTodo()" ">addTodo</div>
+               
+                </div>
+
+                <!--   example Box -->
+                <div id=" previewBox">
+                        <div class="todoBox">
+                            <div id="delTodo"><i class="fa-solid fa-xmark" style="cursor:pointer;"></i></div>
+                            <div id="showTodoBox">
+
+                                <div class="showTodoName">Example</div>
+                                <div class="showTodoDescription">This is an example</div>
+                                <div class="dateBox">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <div class="showTodoDate">example</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="setGroupSettings">
+            <div id="groupName"></div>
+        </div>
+
+        <input type="submit" id="sendGroupName">
+    </body>
+</html>

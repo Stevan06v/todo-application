@@ -1,0 +1,303 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<link rel="stylesheet" href="dist/theme/moon.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+
+			<section>
+				<section data-background-color="#07272e">
+					<h1>Endabgabe</h1>
+
+				</section>
+				<section data-background-color="#07272e">
+					<h3>Timeline -All Sprints</h3>
+
+						<ul>
+							<li>Download</li>
+							
+							<ul>
+							<li><a href="../allSprints/Vlajic_Sprint.docx" download="">Sprint 1</a> -Thursday, 7. April 2022</li>
+							<li><a href="../allSprints/Vlajic_Sprint2.docx" download="">Sprint 2</a> -Thursday, 28. April 2022</li>
+							<li><a href="../allSprints/Vlajic_Sprint3.docx" download="">Sprint 3</a> -Thursday, 12. May 2022</li>
+						</ul>
+						</ul>
+
+					
+				</section>
+				<section>
+
+					<h2>Änderungen:</h2>
+					<ul>
+						<li>Homedesign Überarbeitung</li>
+						<li>Klander und weitere Funktionen eingefügt</li>
+						<li>Settings hinzugefügt</li>
+						<li>Custom Cursors</li>
+						<li>Design gefixt</li>
+						<li>Neue Buttons</li>
+						<li>Reveal JS</li>
+					</ul>
+				</section>
+			
+				<section>
+					<h2>Detailiert: </h2>
+					<ul>
+						<li ">Ich habe mich im Endeffekt für 3 Unterseiten entschieden, da 3 der Unterseiten keine richtigen Funktionen gehabt haben</li>
+						<li>Settings mit veränderbarem Namen und Profilbild</li>
+						<li>Custom Cursors in den verschiedenen Ordnern</li>
+						<li>Design gefixt = relative responsiv gemacht</li>
+						<li>Neue Funktionen = Einstellungen,Kalender, große Anzeige </li>
+						<li>allgmeine bugs gefixxt</li>
+						<li>Reveal JS</li>
+					</ul>
+
+				</section>
+
+			</section>
+
+			<section>
+				<h1>Todo- Manager/Klander</h1>
+			</section>
+
+			<section>
+			<a href=" ../../html/index.html">
+							<h2 style="color: rgb(81, 70, 234);">Zur Webseite</h2></a>
+
+				</section>
+				<section>
+					<section>
+						<h1>Klassenstruktur  /Code </h1>
+					</section>
+
+					<section>
+
+						<h3>Die Klasse Group</h3>
+						<pre>
+				<code data-trim data-noescape>
+					class Group {
+						/**
+						 * @param {int} id --userId
+						 */
+						constructor(id) {
+						  this.name = ''
+						  this.color = ''
+						  this.id = id
+						  this.todos = []
+						}
+						/**
+						 * @param {String} grName --group name
+						 */
+						setGroupName(grName) {
+						  this.name = grName
+						}
+						/**
+						 * @param {String} color --group color
+						 */
+						setGroupClr(color) {
+						  this.color = color
+						}
+						/**
+						 * @param {Object} todo 
+						 */
+						setNewTodo(todo) {
+						  this.todos.push(todo)
+						}
+					  }
+				</code>
+			</pre>
+
+					</section>
+
+					<section>
+
+						<h3>Die Klasse Todo</h3>
+						<pre>
+				<code data-trim data-noescape>
+					class Todo {
+						constructor(id) {
+						  this.name = ''
+						  this.description = ''
+						  this.date = ''
+						  this.id = id
+						  this.bulletPoint = []
+						}
+					  
+						pushinP(bulletPoint) {
+						  this.bulletPoint.push(bulletPoint)
+						}
+					  
+					  }
+				</code>
+			</pre>
+
+					</section>
+
+					<section>
+
+						<h3>Daten speichern/auslesen</h3>
+						<pre>
+				<code data-trim data-noescape>
+					
+let groupArr = []
+
+
+if (!localStorage.hasOwnProperty("Groups")) {
+  groupArr = []
+} else {
+  groupArr = JSON.parse(localStorage.getItem("Groups"))
+}
+				</code>
+			</pre>
+
+					</section>
+
+
+					<section>
+
+						<h3>Hauptfunktionalität(Groups) </h3>
+						<pre>
+				<code data-trim data-noescape>
+					
+
+					// check selcted func- tool 
+					function getSelected(selected) {
+					  switch (selected) {
+						case "xCursorSelected":
+						  unselectAll()
+						  editFuncs.xCursorSelected = true
+						  console.log('xCursorSelected ' + true);
+					
+						  document.getElementsByTagName('body')[0].style.cursor = "url('../css/cursors/x.png'), auto";
+						  //url('./x.png'), alias.classList.add("xCursor");
+						  console.log("x cursor");
+					
+						  addRemFunc()
+						  remColorPalette()
+						  break;
+						case "ghostGroupSelected":
+						  unselectAll()
+						  editFuncs.ghostGroupSelected = true
+						  console.log('ghostGroupSelected ' + true);
+						  remColorPalette()
+						  break;
+						case "leaveFolderSelected":
+						  unselectAll()
+						  editFuncs.paintBucketSelected = true
+						  console.log('leaveFolderSelected ' + true);
+						  leaveFolder()
+						  remColorPalette()
+						  break;
+						case "killTodoSelected":
+						  unselectAll()
+						  editFuncs.killTodoSelected = true
+						  console.log('killTodoSelected ' + true);
+						  remColorPalette()
+						  break;
+						case "colorPalate":
+						  unselectAll()
+						  editFuncs.colorPalate = true
+						  console.log('colorPalate ' + true);
+						  document.getElementsByTagName('body')[0].style.cursor = "url('../css/cursors/bucket.png'), auto";
+						  addColorPalette()
+						  break;
+						case "usualCursorSelected":
+						  unselectAll()
+						  editFuncs.usualCursorSelected = true
+						  document.getElementsByTagName('body')[0].style.cursor = "none"
+						  document.getElementsByTagName('body')[0].style.cursor = "url('../css/cursors/usualCursor.png'), auto";
+						  console.log('usualCursorSelected ' + true);
+					
+					
+						  console.log('usual cursor');
+					
+						  openFolders()
+						  remColorPalette()
+						  break;
+					  }
+					}
+					
+}
+				</code>
+			</pre>
+
+					</section>
+
+					<section>
+
+						<h3>Todoanzeige</h3>
+						<pre>
+				<code data-trim data-noescape>
+					
+					let getAllTodos = {
+						list: []
+					}
+					
+					let pos = 0
+					function colorizeTodos() {
+						for (let x = 0; x < JSON.parse(localStorage.getItem('Groups')).length; x++) {
+							for (let y = 0; y < JSON.parse(localStorage.getItem('Groups'))[x].todos.length; y++) {
+							   document.getElementsByClassName('bigTodoName')[pos].style.backgroundColor = 
+							   `${JSON.parse(localStorage.getItem('Groups'))[x].color}` 
+							   pos++
+							}
+						} 
+					}
+					
+				</code>
+			</pre>
+					</section>
+			</section>
+
+				<section>
+					<section>
+						<h1>Abschließende Worte</h1>
+						
+					</section>
+					<section>
+						<ul>
+							<li>Neue Lösungstrategien kennengelernt</li>
+							<li>Neue Funktionalitäten kennengelernt</li>
+							<li>Neue Designarten ausprobiert</li>
+							<li>Interessant</li>
+						</ul>
+					</section>
+				</section>
+
+				<section><h1>Danke für eure Aufmerksamkeit</h1>
+					</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+</body>
+
+</html>

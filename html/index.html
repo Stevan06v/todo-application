@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo</title>
+  <!--  <script src="../js/manager.js" defer></script> -->
+  <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+
+  <script src="../js/script.js" defer> </script>
+
+
+
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="https://kit.fontawesome.com/61efd671c0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+
+  <div id="showStuff">
+    <div id="showNotifications">
+    </div>
+    <nav>
+      <div id="iconBox">
+      </div>
+    </nav>
+  </div>
+  <div style="margin-top: 2vw; opacity: 0;">"</div>
+
+
+
+  <div id="mainContentBox"> 
+   <!--   <h1 class="headlineMain">Manage your To-Do`s: </h1> -->
+    <div id="mainBox1"></div>
+  </div>
+
+
+  <!-- Testing button -->
+  
+  <div id="centerSettingBox">
+    <div id="parentGrid">
+      <div id="showSettings">
+  
+        <i class="fa-solid fa-xmark" id="closeSettings"></i>
+
+      
+        <div id="centerGrid">
+          <div id="inputUserData">
+            <p id="headUSettings">User Settings:</p>
+            <div id="inputUnameBox">
+              <p>Username: </p>
+              <input type="text" id="userName" class="inputData">
+            </div>
+
+            <div id="inputCity">
+              <p>City: </p>
+              <input type="text" id="userCity" class="inputData">
+            </div>
+
+            <div id="inputPLZ">
+              <p>PLZ: </p>
+              <input type="text" id="userPLZ" class="inputData">
+            </div>
+          </div>
+
+          <div id="userAvatar">
+            <img src="../css/avatar/picOne.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(0)">
+            <img src="../css/avatar/picTwo.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(1)">
+            <img src="../css/avatar/picThree.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(2)">
+            <img src="../css/avatar/picFour.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(3)">
+            <img src="../css/avatar/picFive.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(4)">
+            <img src="../css/avatar/picSix.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(5)">
+            <img src="../css/avatar/picSeven.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(6)">
+            <img src="../css/avatar/picEight.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(7)">
+            <img src="../css/avatar/picNine.png" alt="" style="width: 75px; height:auto;" class="avatar" onclick="pickAvatar(8)">
+          </div>
+        </div>
+
+
+      </div>  
+    <div onclick="changeSettings()" id="settingsBtn"">send</div>
+      
+    </div>
+  
+  </div>
+
+</body>
+</html>
